@@ -5,7 +5,9 @@ A docker wrap of vscode server that auto connects to a graymamba NFS with irruta
 
 ```bash
 docker buildx build --platform linux/amd64 -t grayvscode:v1.0.0 .
-docker run -d -p 8080:8080 --rm --privileged --network graymamba-network --platform linux/amd64 grayvscode:v1.0.0
+docker run -d -p 8080:8080 -v /Users/mawdo/GRAY/TESTDATA/.vscode:/tobe/provided/.vscode --rm --privileged --network graymamba-network --platform linux/amd64 grayvscode:v1.0.0
+
+note we've allowed for the possibility of preserving .vscode settings in the provided volume
 ```
 ## Todo
 Add some vscode language extensions to make the environment more interesting and able to try workloads

@@ -29,4 +29,4 @@ EXPOSE 8080
 CMD ["code-server", "--host", "0.0.0.0", "--port", "8080", "--auth", "none"]
 
 # Set the command to run the mount script and then code-server
-CMD ["/bin/bash", "-c", "/usr/local/bin/mount_nfs.sh && code-server --host 0.0.0.0 --port 8080 --auth none --user-data-dir /mnt/gray/.vscode --open /mnt/gray"]
+CMD ["/bin/bash", "-c", "/usr/local/bin/mount_nfs.sh && code-server --host 0.0.0.0 --port 8080 --auth none --user-data-dir /tobe/provided/.vscode --open /mnt/gray"]
