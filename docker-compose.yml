@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  nfs:
+    image: gmawdo/graymamba:v1.0.8
+    container_name: nfs_container
+    volumes:
+      - /Users/mawdo/GRAY/TESTDATA/config:/config
+      - /Users/mawdo/GRAY/TESTDATA/RocksDBs:/RocksDBs
+    ports:
+      - "2049:2049"
+    networks:
+      - graymamba-network
+    restart: unless-stopped
+    platform: linux/amd64 
+
+  vscode:
+    image: gmawdo/grayvscode:v1.0.1
+    container_name: vscode_container
+    ports:
+      - "8080:8080"
+    volumes:
+      - /Users/mawdo/GRAY/TESTDATA/.vscode:/tobe/provided/.vscode
+    networks:
+      - graymamba-network
+    privileged: true
+    restart: unless-stopped
+    platform: linux/amd64
+    depends_on:
+      - nfs
+
+networks:
+  graymamba-network:
+    driver: bridge
+
+name: graymamba_demo
