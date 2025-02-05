@@ -23,6 +23,8 @@ services:
       - /Users/mawdo/GRAY/TESTDATA/.vscode:/tobe/provided/.vscode
     networks:
       - graymamba-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     privileged: true
     restart: unless-stopped
     platform: linux/amd64
